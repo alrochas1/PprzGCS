@@ -21,6 +21,7 @@
 
 #include "grid_viewer.h"
 #include "grid_item.h"
+#include "circle_item.h"
 
 
 class ACItemManager;
@@ -161,11 +162,13 @@ private:
     QMenu* menu_clear_track;
     QAction* show_hidden_wp_action;
 
-    QGraphicsPixmapItem* slam_grid_pixmap = nullptr;
+    // Obstacles
     GridItem* grid_item = nullptr;
     ObstacleGridMap* obstacle_grid_map = nullptr;
     QImage slam_grid_image;
     bool slam_grid_visible = true;
+    bool obstacles_visible = true;
+    QList<QPair<CircleItem*, QDateTime>> slam_obstacles;
 };
 
 #endif // MAPWIDGET_H
