@@ -1568,7 +1568,8 @@ void MapWidget::onGridChanges(QString sender, pprzlink::Message msg) {
     msg.getField("value", value);
 
     obstacle_grid_map->updateCell(row, column, value);
-    grid_item->updateGraphics(this, UpdateEvent::ITEM_CHANGED);
+    // grid_item->updateGraphics(this, UpdateEvent::ITEM_CHANGED);
+    grid_item->updateCell(this, UpdateEvent::ITEM_CHANGED, row, column);
 
 
 }
