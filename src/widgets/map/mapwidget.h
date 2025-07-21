@@ -47,6 +47,7 @@ class MapWidget : public Map2D, public Configurable
     Q_OBJECT
     Q_PROPERTY(int ac_arrow_size MEMBER _ac_arrow_size WRITE setAcArrowSize)
     Q_PROPERTY(bool show_hidden_waypoints WRITE showHiddenWaypoints)
+    Q_PROPERTY(bool show_crash_prediction WRITE showCrashPrediction)
 public:
     explicit MapWidget(QWidget *parent = nullptr);
 
@@ -66,6 +67,7 @@ public:
     void rotateMap(double rot);
     void setAcArrowSize(int s);
     void showHiddenWaypoints(bool state);
+    void showCrashPrediction(bool state);
 
 signals:
     void mouseMoved(QPointF scenePos);
@@ -80,7 +82,6 @@ protected:
     virtual void dragEnterEvent(QDragEnterEvent *event) override;
     virtual void dropEvent(QDropEvent *event) override;
     virtual void dragMoveEvent(QDragMoveEvent *event) override;
-    virtual void keyReleaseEvent(QKeyEvent *event) override;
     virtual bool viewportEvent(QEvent *event) override;
 
 private slots:
@@ -96,6 +97,7 @@ private slots:
     void clearDcShots();
     void onIntruder(QString sender, pprzlink::Message msg);
     void onDcShot(QString sender, pprzlink::Message msg);
+    void onROTORCRAFT_FP(QString sender, pprzlink::Message msg);
     void onGCSPos(pprzlink::Message msg);
     void onGVF(QString sender, pprzlink::Message msg);
     void onSLAM(QString sender, pprzlink::Message msg);
@@ -163,6 +165,7 @@ private:
     QMenu* mapMenu;
     QMenu* menu_clear_track;
     QAction* show_hidden_wp_action;
+    QAction* show_crash_prediction_action;
 
     // Obstacles
     GridItem* grid_item = nullptr;
@@ -171,6 +174,7 @@ private:
     bool slam_grid_visible = true;
     bool obstacles_visible = false;
     QList<QPair<CircleItem*, QDateTime>> slam_obstacles;
+    
 };
 
 #endif // MAPWIDGET_H
