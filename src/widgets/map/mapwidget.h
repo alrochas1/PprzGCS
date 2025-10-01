@@ -174,7 +174,6 @@ private:
     bool slam_grid_visible = true;
     bool obstacles_visible = false;
     QList<QPair<CircleItem*, QDateTime>> slam_obstacles;
-    
 };
 
 #endif // MAPWIDGET_H

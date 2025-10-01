@@ -42,6 +42,7 @@ std::map<QString, size_t> AC_WIDGETS_MAP = {
     {"gvf_viewer", tuple_element_index_v<GVFViewer, ac_widgets_list>},
     {"grid_viewer", tuple_element_index_v<GridViewer, ac_widgets_list>},
     {"checklist", tuple_element_index_v<Checklist, ac_widgets_list>},
+    {"grid_viewer", tuple_element_index_v<GridViewer, ac_widgets_list>},
 };
 
 
